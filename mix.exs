@@ -46,8 +46,8 @@ defmodule PhoenixPages.MixProject do
       {:makeup_eex, "~> 0.1", only: :dev},
       {:makeup_js, "~> 0.1", only: :dev},
       {:makeup_json, "~> 0.1", only: [:dev, :test]},
-      {:phoenix, "~> 1.6"},
-      {:phoenix_html, "~> 3.3"},
+      {:phoenix, "~> 1.8"},
+      {:phoenix_html, "~> 4.1"},
       {:yaml_elixir, "~> 2.9"}
     ]
   end
