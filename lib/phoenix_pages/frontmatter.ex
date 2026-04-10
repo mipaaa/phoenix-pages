@@ -7,7 +7,7 @@ defmodule PhoenixPages.Frontmatter do
   # element being the remaining body content. Raises `PhoenixPages.ParseError` if there is an error
   # parsing out the frontmatter.
   def parse(contents, filename \\ nil) do
-    with [fm, content] <- String.split(contents, ~r/\n---\n/, parts: 2),
+    with [fm, content] <- String.split(contents, ~r/\R---\R/, parts: 2),
          {:ok, %{} = data} <- String.trim(fm, "---") |> YamlElixir.read_from_string() do
       data =
         Enum.into(data, %{}, fn {k, v} ->

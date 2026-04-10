@@ -4,9 +4,23 @@ defmodule PhoenixPages.FrontmatterTest do
   import PhoenixPages.Frontmatter
 
   describe "parse/2" do
-    test "should parse valid frontmatter" do
+    test "should parse valid frontmatter with Unix newlines" do
       assert parse("---\nfoo: bar\n---\nHello") == {%{foo: "bar"}, "Hello"}
       assert parse("---\nfoo: bar\nbaz: [qux, quux]\n---\nHello") == {%{foo: "bar", baz: ["qux", "quux"]}, "Hello"}
+    end
+
+    test "should parse valid frontmatter with Windows newlines" do
+      assert parse("---\r\nfoo: bar\r\n---\r\nHello") == {%{foo: "bar"}, "Hello"}
+
+      assert parse("---\r\nfoo: bar\r\nbaz: [qux, quux]\r\n---\r\nHello") ==
+               {%{foo: "bar", baz: ["qux", "quux"]}, "Hello"}
+    end
+
+    test "should parse valid frontmatter with mixed newlines" do
+      assert parse("---\r\nfoo: bar\n---\r\nHello") == {%{foo: "bar"}, "Hello"}
+
+      assert parse("---\r\nfoo: bar\r\nbaz: [qux, quux]\n---\r\nHello") ==
+               {%{foo: "bar", baz: ["qux", "quux"]}, "Hello"}
     end
 
     test "should ignore misformed frontmatter" do
