@@ -43,9 +43,9 @@ defmodule PhoenixPages.MixProject do
       {:earmark, "~> 1.4"},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:makeup, "~> 1.0"},
-      {:makeup_eex, "~> 0.1", only: :dev},
+      {:makeup_eex, "~> 2.0", only: :dev},
       {:makeup_js, "~> 0.1", only: :dev},
-      {:makeup_json, "~> 0.1", only: [:dev, :test]},
+      {:makeup_json, "~> 1.0", only: [:dev, :test]},
       {:phoenix, "~> 1.8"},
       {:phoenix_html, "~> 4.1"},
       {:yaml_elixir, "~> 2.9"}
